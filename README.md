@@ -9,5 +9,5 @@ This is my solutions to [project-euler](https://projecteuler.net/archives).
     t = 3
     a + t
     ```
-- [problem001.another.rb](./problem001.another.rb)
+- [problem001_another.rb](./problem001_another.rb)
     - bar
