@@ -19,7 +19,9 @@ list =
 84580156166097919133875499200524063689912560717606
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"
-.chars.map(&:to_i)
+.delete("\n")
+.chars
+.map(&:to_i)
 
 the_number_of_adjacent_digits = 13
 
@@ -32,7 +34,6 @@ def  maximal_product_of_adjacent_digits_of(ary, num_of_adjacent)
     candidate = 0
     (ary.length - num_of_adjacent).times do |ith|
         candidate = product_of_k_adjacent_digits_from_nth_number_of(ary, 1, ith, num_of_adjacent)
-        puts ith
         if maximal_product < candidate then
             maximal_product = candidate
         end
