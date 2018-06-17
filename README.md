@@ -20,7 +20,7 @@ This is my solutions to [project-euler](https://projecteuler.net/archives).
 
 - [problem002.rb](./problem002.rb)
 
-  I learned how to define of recursive functions.
+  I learned how to define recursive functions.
 
 ## problem003
 
@@ -84,5 +84,18 @@ RubyVM::InstructionSequence.compile_option = {
   When you take adjacent elements of an array , 'each_cons' method is useful.
 
 ## problem009
+
+- [problem009.rb](./problem009.rb)
+
+  Substituting c = 1000 - (a + b) for
+  a^2 + b^2 = c^2, you get the equation 1000 (a + b) - ab = 5_000_000. So, I find a, b (a<333, b<500) which satisfy it.
+
+## problem010
+
+- [problem010.rb](./problem010.rb)
+
+  I also use "Prime.each".
+
+## problem011
 
 - Under construction...
