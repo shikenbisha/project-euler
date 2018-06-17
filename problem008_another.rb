@@ -25,14 +25,8 @@ num_list =
 
 num_of_adjacent_digits = 13
 
-def  product_of_elements_of(array)
-    product = 1
-    array.each{ |i| product *= i }
-    product
-end
-
 max_product_of_adj_digits = num_list.each_cons(num_of_adjacent_digits).to_a
-                                    .collect{ |ary| product_of_elements_of(ary) }
+                                    .collect{ |ary| ary.inject(:*) }
                                     .max
 
 puts max_product_of_adj_digits
