@@ -26,17 +26,17 @@ adjacent_digits = 4
 width_of_num_grid  = 20
 height_of_num_grid = 20
 
-def right_direct_product_of(ary, adj_dgts)
-      ary.each_cons(adj_dgts).to_a
-         .collect{ |ary| ary.inject(:*) }
-         .max
+def  right_direct_product_of(ary, adj_dgts)
+       ary.each_cons(adj_dgts).to_a
+          .collect{ |ary| ary.inject(:*) }
+          .max
 end
 
-def down_direct_product_of(ary, adj_dgts, width, height)
-      lower_right_corner = (width * height) - 1
-      index_upper_bound  = lower_right_corner - width * (adj_dgts - 1)
-      (0..index_upper_bound).map{ |i| ary[i] * ary[i + width] * ary[i + (2 * width)] * ary[i + (3 * width)] }
-                            .max
+def  down_direct_product_of(ary, adj_dgts, width, height)
+       lower_right_corner = (width * height) - 1
+       index_upper_bound  = lower_right_corner - width * (adj_dgts - 1)
+       (0..index_upper_bound).map{ |i| ary[i] * ary[i + width] * ary[i + (2 * width)] * ary[i + (3 * width)] }
+                             .max
 end
 
 def  lower_right_direct_product_of(ary, adj_dgts, width, height)
