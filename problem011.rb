@@ -23,6 +23,8 @@ num_grid =
 .map(&:to_i)
 
 adjacent_digits = 4
+width_of_num_grid  = 20
+height_of_num_grid = 20
 
 def right_direct_product_of(ary, adj_dgts)
       ary.each_cons(adj_dgts).to_a
@@ -30,82 +32,33 @@ def right_direct_product_of(ary, adj_dgts)
          .max
 end
 
-def down_direct_product_of(ary, adj_dgts)
-      index_upper_bound = 399 - 20 * (adj_dgts - 1)
-      i = 0
-      candidate = 1
-      max_product = 1
-
-      while  i <= index_upper_bound
-        candidate = ary[i] * ary[i + 20] * ary[i + 40] * ary[i + 60]
-        if candidate > max_product then 
-            max_product = candidate
-        end
-        i += 1
-      end
-    
-      max_product
-
-=begin
-      def  product_of(ary1, i, candidate, max_product, i_upp_bound)
-        candidate = ary1[i] * ary1[i + 20] * ary1[i + 40] * ary1[i + 60]
-        if  max_product < candidate  then
-            max_product = candidate
-        end
-        if  i <= i_upp_bound  then
-            product_of(ary1, i+1 ,candidate, max_product, i_upp_bound)
-        else
-            max_product
-        end
-      end
-      
-      product_of(ary, 0, 1, 1, index_upper_bound)
-=end
-
+def down_direct_product_of(ary, adj_dgts, width, height)
+      lower_right_corner = (width * height) - 1
+      index_upper_bound  = lower_right_corner - width * (adj_dgts - 1)
+      (0..index_upper_bound).map{ |i| ary[i] * ary[i + width] * ary[i + (2 * width)] * ary[i + (3 * width)] }
+                            .max
 end
 
-def  lower_right_direct_product_of(ary, adj_dgts)
-    index_upper_bound = 399 - 20 * (adj_dgts - 1) - (adj_dgts - 1)
-    i = 0
-    candidate = 1
-    max_product = 1
-
-    while  i <= index_upper_bound
-      if (i % 20) <= (20 - adj_dgts) then
-        candidate = ary[i] * ary[i + 21] * ary[i + 42] * ary[i + 63]
-      end
-      if candidate > max_product then 
-        max_product = candidate
-      end
-      i += 1
-    end
-
-    max_product
+def  lower_right_direct_product_of(ary, adj_dgts, width, height)
+       lower_right_corner = (width * height) - 1
+       index_upper_bound  = lower_right_corner - width * (adj_dgts - 1) - (adj_dgts - 1)
+       (0..index_upper_bound).select{ |i| (i % width) <= (width - adj_dgts) }
+                             .map{ |i| ary[i] * ary[i + width + 1] * ary[i + 2 * (width + 1)] * ary[i + 3 * (width + 1)] }
+                             .max
 end
 
-def  lower_left_direct_product_of(ary, adj_dgts)
-    index_upper_bound = 399 - 20 * (adj_dgts - 1)
-    i = 4
-    candidate = 1
-    max_product = 1
-
-    while  i <= index_upper_bound
-      if (i % 20) >= (adj_dgts - 1) then
-        candidate = ary[i] * ary[i + 19] * ary[i + 38] * ary[i + 57]
-      end
-      if candidate > max_product then 
-        max_product = candidate
-      end
-      i += 1
-    end
-
-    max_product
+def  lower_left_direct_product_of(ary, adj_dgts, width, height)
+       lower_right_corner = (width * height) - 1
+       index_upper_bound  = lower_right_corner - width * (adj_dgts - 1)
+       (4..index_upper_bound).select{ |i| (i % width) >= (adj_dgts - 1) }
+                             .map{ |i| ary[i] * ary[i + width - 1] * ary[i + 2 * (width - 1)] * ary[i + 3 * (width - 1)] }
+                             .max
 end
 
 right       = right_direct_product_of(num_grid, adjacent_digits)
-down        =  down_direct_product_of(num_grid, adjacent_digits)
-lower_right = lower_right_direct_product_of(num_grid, adjacent_digits)
-lower_left  = lower_left_direct_product_of(num_grid, adjacent_digits)
+down        =  down_direct_product_of(num_grid, adjacent_digits, width_of_num_grid, height_of_num_grid)
+lower_right = lower_right_direct_product_of(num_grid, adjacent_digits, width_of_num_grid, height_of_num_grid)
+lower_left  = lower_left_direct_product_of(num_grid, adjacent_digits, width_of_num_grid, height_of_num_grid)
 max_product_of_num_grid = [right, down, lower_left, lower_right].max
 
 puts 'right direct max product = ', right
