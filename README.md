@@ -102,7 +102,7 @@ RubyVM::InstructionSequence.compile_option = {
 - [problem011.rb](./problem011.rb)
 
   You have only to think 4-direct product in the grid, "right, down, lower_right and lower_left".  
-  By the way, I store the grid in a 1-dimension array.
+  By the way, I store the grid in a 1-dimension array.
 
   - right direct  
     I use the approach of [problem008_another.rb](./problem008_another.rb) to this problem.
