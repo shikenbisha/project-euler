@@ -88,7 +88,8 @@ RubyVM::InstructionSequence.compile_option = {
 - [problem009.rb](./problem009.rb)
 
   Substituting c = 1000 - (a + b) for
-  a^2 + b^2 = c^2, you get the equation 1000 (a + b) - ab = 5_000_000. So, I find a, b (a<333, b<500) which satisfy it.
+  a^2 + b^2 = c^2, you get the equation 1000 (a + b) - ab = 5_000_000.  
+  So, I find a, b (a<333, b<500) which satisfy it.
 
 ## problem010
 
@@ -97,5 +98,18 @@ RubyVM::InstructionSequence.compile_option = {
   I also use "Prime.each".
 
 ## problem011
+
+- [problem011.rb](./problem011.rb)
+
+  You have only to think 4-direct product in the grid, "right, down, lower_right and lower_left".  
+  By the way, I store the grid in a 1-dimension array.
+
+  - right direct  
+    I use the approach of [problem008_another.rb](./problem008_another.rb) to this problem.
+  - down, lower_right, lower_left direct  
+    I store candidates of the greatest product in an array, and then, get max value by 'max'.
+    Apparently, 'while' is not necessary by using method of array operation.
+
+## problem012
 
 - Under construction...
