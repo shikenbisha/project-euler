@@ -116,4 +116,12 @@ RubyVM::InstructionSequence.compile_option = {
 
 ## problem012
 
+- [problem012.rb](./problem012.rb)
+
+  Since I want to overcome 'stack level too deep', I used the rubygem ['no_sltd'](https://qiita.com/tompng/items/67db54374ca14bef715f).
+
+  By the way, I always rely on Prime...  
+
+## problem013
+
 - Under construction...
